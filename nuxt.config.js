@@ -1,23 +1,24 @@
-const parseArgs = require("minimist")
+const parseArgs = require('minimist');
+
 const argv = parseArgs(process.argv.slice(2), {
   alias: {
-    H: "hostname",
-    p: "port"
+    H: 'hostname',
+    p: 'port'
   },
-  string: ["H"],
+  string: ['H'],
   unknown: parameter => false
-})
+});
 
 const port =
   argv.port ||
   process.env.PORT ||
   process.env.npm_package_config_nuxt_port ||
-  "3000"
+  '3000';
 const host =
   argv.hostname ||
   process.env.HOST ||
   process.env.npm_package_config_nuxt_host ||
-  "localhost"
+  'localhost';
 module.exports = {
   env: {
     baseUrl:
@@ -25,40 +26,51 @@ module.exports = {
       `http://${host}:${port}`
   },
   head: {
-    title: "tt1",
+    title: 'tt1',
     meta: [
-      { charset: "utf-8" },
+      { charset: 'utf-8' },
       {
-        name: "viewport",
+        name: 'viewport',
         content:
-          "width=device-width, initial-scale=1"
+          'width=device-width, initial-scale=1'
       },
       {
-        hid: "description",
-        name: "description",
-        content: "Nuxt.js project"
+        hid: 'description',
+        name: 'description',
+        content: 'Nuxt.js project'
       }
     ],
     link: [
       {
-        rel: "icon",
-        type: "image/x-icon",
-        href: "/favicon.ico"
+        rel: 'icon',
+        type: 'image/x-icon',
+        href: '/favicon.ico'
       }
     ]
   },
   /*
   ** Customize the progress-bar color
   */
-  loading: { color: "#3B8070" },
+  loading: { color: '#3B8070' },
   /*
   ** Build configuration
   */
-  css: ["~/assets/css/main.css"],
-  build: {},
+  css: ['~/assets/css/main.css'],
+  build: {
+    postcss: [
+      require('postcss-import')(),
+      require('postcss-custom-properties')(),
+      require('postcss-custom-media')(),
+      require('postcss-nested')(),
+      require('postcss-color-hex-alpha')(),
+      require('postcss-fixes')(),
+      require('postcss-url')(),
+      require('autoprefixer')(),
+    ]
+  },
   modules: [
-    "@nuxtjs/axios",
-    "~/modules/typescript.js"
+    '@nuxtjs/axios',
+    '~/modules/typescript.js'
   ],
   axios: {}
-}
+};
