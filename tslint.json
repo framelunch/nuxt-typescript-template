@@ -1,0 +1,33 @@
+{
+  "rulesDirectory": ["tslint-plugin-prettier"],
+  "defaultSeverity": "error",
+  "extends": [
+    "tslint:recommended", // https://github.com/palantir/tslint/blob/master/src/configs/recommended.ts
+    "tslint-config-prettier"
+  ],
+  "rules": {
+    // コンソール禁止 無効化 babel挟むとかしてどっかではずせばよい
+    "no-console": [false],
+    // 文字列はシングルクォート JSXはダブル テンプレがらみやエスケープ絡みは適当
+    "quotemark": [true, "single", "jsx-double", "avoid-template", "avoid-escape"],
+    // オブジェクトのキーをa-z順 めんどくさすぎるので無効化
+    "object-literal-sort-keys": [false],
+    // import順をa-z順 めんどくさすぎるので無効化
+    "ordered-imports": [false],
+    // interfaceはIはじまりで命名 無効化 Microsoftのクセが有る人にはそっちのほうがいいんだけど。
+    "interface-name": [false],
+    // アローファンクションの引数をカッコで括る 有効 ただし引数が1つだけの場合は無効化
+    "arrow-parens": [true, "ban-single-arg-parens"],
+    // クラスのアクセス修飾子強制 JSに寄せるため無効化
+    "member-access": [false],
+    // クラスのメンバをa-z順 めんどくさすぎるので無効化
+    "member-ordering": [false],
+    // 変数名予約語禁止、lowerCase or UPPER_CASE、アンスコ始まりOK
+    "variable-name": [true, "ban-keywords", "check-format", "allow-leading-underscore"],
+
+    /*
+         * enable prettier
+         */
+    "prettier": true
+  }
+}

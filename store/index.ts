@@ -3,8 +3,8 @@ export const state = () => ({
 });
 
 export const mutations = {
-  setPeople(state, people) {
-    state.people = people;
+  setPeople(getState, people) {
+    getState.people = people;
   },
 };
 

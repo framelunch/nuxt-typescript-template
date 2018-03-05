@@ -14,7 +14,14 @@
     "dev": "nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
+    "pregenerate": "npm run clean",
     "generate": "nuxt generate",
+    "clean": "rimraf dist",
+    "lint": "run-p lint:*",
+    "lint:style": "stylelint '{assets,components,layouts,middleware,modules,pages,store}/**/*.css'",
+    "lint:script": "tslint '{assets,components,layouts,middleware,modules,pages,store}/**/*.ts'",
+    "lint:vue": "run-p lint:vue:*",
+    "lint:vue:style": "stylelint --config .vue.stylelintrc '{assets,components,layouts,middleware,modules,pages,store}/**/*.vue'",
     "prettier": "prettier --write '{assets,components,layouts,middleware,modules,pages,store}/**/*.{ts,js,json,css,vue}'"
   },
   "lint-staged": {
@@ -22,10 +29,12 @@
     "linters": {
       "*.ts": [
         "prettier --write",
+        "tslint",
         "git add"
       ],
       "*.css": [
         "prettier --write",
+        "stylelint",
         "git add"
       ],
       "*.json": [
@@ -34,6 +43,7 @@
       ],
       "*.vue": [
         "prettier --write",
+        "stylelint --config .vue.stylelintrc",
         "git add"
       ]
     }
@@ -49,6 +59,7 @@
     "@types/node": "^9.4.6",
     "husky": "^0.14.3",
     "lint-staged": "^7.0.0",
+    "npm-run-all": "^4.1.2",
     "postcss-color-hex-alpha": "^3.0.0",
     "postcss-custom-media": "^6.0.0",
     "postcss-custom-properties": "^7.0.0",
@@ -58,7 +69,14 @@
     "postcss-nested": "^3.0.0",
     "postcss-url": "^7.3.1",
     "prettier": "^1.11.1",
+    "rimraf": "^2.6.2",
+    "stylelint": "^9.1.1",
+    "stylelint-config-framelunch": "framelunch/stylelint-config-framelunch#v0.3.0",
+    "stylelint-processor-html": "^1.0.0",
     "ts-loader": "^3.5.0",
+    "tslint": "^5.9.1",
+    "tslint-config-prettier": "^1.9.0",
+    "tslint-plugin-prettier": "^1.3.0",
     "typescript": "^2.7.2"
   }
 }
