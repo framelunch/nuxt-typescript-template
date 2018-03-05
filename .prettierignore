@@ -1,0 +1,7 @@
+dist
+node_modules
+static
+package.json
+index.d.ts
+nuxt.config.js
+tsconfig.json

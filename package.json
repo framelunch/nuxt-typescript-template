@@ -1,0 +1,48 @@
+{
+  "name": "nuxt-ts",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "@nuxtjs/axios": "^5.0.0",
+    "nuxt": "^1.3.0",
+    "nuxt-property-decorator": "^1.0.0",
+    "vuex-class": "^0.3.0"
+  },
+  "scripts": {
+    "precommit": "lint-staged",
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate",
+    "prettier": "prettier --write '{assets,components,layouts,middleware,modules,pages,store}/**/*.{ts,js,json,css,vue}'"
+  },
+  "lint-staged": {
+    "subTaskConcurrency": 1,
+    "linters": {
+      "*.ts": [
+        "prettier --write",
+        "git add"
+      ],
+      "*.css": [
+        "prettier --write",
+        "git add"
+      ],
+      "*.json": [
+        "prettier --write",
+        "git add"
+      ],
+      "*.vue": [
+        "prettier --write",
+        "git add"
+      ]
+    }
+  },
+  "devDependencies": {
+    "@types/node": "^9.4.6",
+    "husky": "^0.14.3",
+    "lint-staged": "^7.0.0",
+    "prettier": "^1.11.1",
+    "ts-loader": "^3.5.0",
+    "typescript": "^2.7.2"
+  }
+}
