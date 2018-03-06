@@ -12,13 +12,15 @@ import { Component, Vue } from 'nuxt-property-decorator';
 import { State } from 'vuex-class';
 import Card from '~/components/Card.vue';
 
+import { People } from '../interfaces/Person';
+
 @Component({
   components: {
     Card,
   },
 })
 export default class extends Vue {
-  @State people;
+  @State people: People;
 }
 </script>
 <style scoped>

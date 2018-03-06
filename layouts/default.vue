@@ -4,7 +4,6 @@ div {
 }
 </style>
 
-
 <template>
   <div>
     <nuxt/>
