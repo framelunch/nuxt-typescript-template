@@ -1,17 +1,8 @@
-<template>
-  <section>
-    <h1 class="header">Nuxt TypeScript Starter</h1>
-    <div class="cards">
-      <Card v-for="person in people" :key="person.id" :person="person"></Card>
-    </div>
-  </section>
-</template>
-
 <script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator';
 import { State } from 'vuex-class';
-import Card from '~/components/Card.vue';
 
+import Card from '~/components/Card.vue';
 import { People } from '../interfaces/Person';
 
 @Component({
@@ -23,6 +14,7 @@ export default class extends Vue {
   @State people: People;
 }
 </script>
+
 <style scoped>
 .header {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -33,3 +25,13 @@ export default class extends Vue {
   flex-wrap: wrap;
 }
 </style>
+
+<template>
+  <section>
+    <h1 class="header">Nuxt TypeScript Starter</h1>
+    <router-link to="/about">アバウト</router-link>
+    <div class="cards">
+      <Card v-for="person in people" :key="person.id" :person="person"></Card>
+    </div>
+  </section>
+</template>

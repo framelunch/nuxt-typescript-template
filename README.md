@@ -1,22 +1,45 @@
-# nuxt-ts
+# Nuxt.js Typescript + PostCSS Template
 
-> Nuxt.js TypeScript project
+## 元ネタ
 
-## Build Setup
+https://github.com/nuxt-community/typescript-template/tree/22d0c56f20bfd588c264ba90b4a43e57f83fdb3f
 
-``` bash
-# install dependencies
-$ npm install # Or yarn install
+## ちがい
 
-# serve with hot reload at localhost:3000
-$ npm run dev
+* ディレクトリ構成を変更し、`src`ディレクトリに各ファイルをまとめる構成にしました。
+* `.gitignore`がより詳細に設定されています。
+* `prettier`を設定しファイルコミット時にprettierがかかるようになっています。
+    * エディタを設定しファイル保存時にprettierが実行されるようにするのがおすすめです。
+* `tslint`を設定し`.ts`ファイルの構文をチェックします。`.vue`ファイルについては現在のところスルーです。
+* `stylelint`を設定し`.css`, `.vue`ファイルの構文をチェックします。
+* `sanitize.css`を読み込みCSSをリセットしています。
+* `tsconfig.json`を変更し厳しいチェックを行うようになっています。
 
-# build for production and launch server
-$ npm run build
-$ npm start
+## 注意点
 
-# generate static project
-$ npm run generate
+JavaScriptではなくTypeScriptです。補完が聞いて便利なんです
+
+## 動かし方
+
+```bash
+# install module
+yarn
+# start development
+yarn dev
+# production build
+yarn build
+# ... and launch server
+yarn start
+# generate static files
+yarn generate
 ```
 
-For detailed explanation on how things work, checkout the [Nuxt.js docs](https://github.com/nuxt/nuxt.js).
+## 拡張方法
+
+`src/pages/`の下を拡張していくと勝手にルーティングも変更されてよしなにしてくれます。
+
+## TODO
+
+* test
+* `.vue` lint
+* robots.txtとかfaviconとかの扱い

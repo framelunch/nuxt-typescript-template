@@ -62,6 +62,14 @@ module.exports = {
   */
   loading: { color: '#3B8070' },
   /*
+   * generate command configration
+   */
+  // generate: {
+  //   routes: [
+  //     '/about'
+  //   ],
+  // },
+  /*
   ** Build configuration
   */
   css: ['~/assets/css/main.css'],

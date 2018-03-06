@@ -27,5 +27,6 @@
     "block-opening-brace-space-before": null,
     "number-leading-zero": null,
     "number-no-trailing-zeros": null,
+    "no-empty-source": null,
   }
 }

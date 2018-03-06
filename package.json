@@ -1,6 +1,6 @@
 {
   "name": "nuxt-ts",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "private": true,
   "dependencies": {
     "@nuxtjs/axios": "^5.0.0",
@@ -13,6 +13,7 @@
   "scripts": {
     "precommit": "lint-staged",
     "dev": "nuxt",
+    "prebuild": "npm run clean",
     "build": "nuxt build",
     "start": "nuxt start",
     "pregenerate": "npm run clean",
@@ -23,7 +24,7 @@
     "lint:script": "tslint './src/**/*.ts'",
     "lint:vue": "run-p lint:vue:*",
     "lint:vue:style": "stylelint --config .vue.stylelintrc './src/**/*.vue'",
-    "prettier": "prettier --write './src/**/*.{ts,js,json,css,vue}'"
+    "fix": "prettier --write './src/**/*.{ts,js,json,css,vue}'"
   },
   "lint-staged": {
     "subTaskConcurrency": 1,
