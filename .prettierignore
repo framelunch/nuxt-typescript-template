@@ -1,7 +1,6 @@
 dist
 node_modules
-static
+src/static
 package.json
-index.d.ts
 nuxt.config.js
 tsconfig.json

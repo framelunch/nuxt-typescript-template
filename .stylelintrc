@@ -2,7 +2,7 @@
   "extends": ["stylelint-config-framelunch"],
   "ignoreFiles": [
     "dist/**/*",
-    "static/**/*"
+    "src/static/**/*"
   ],
   "rules": {
     "max-line-length": null,

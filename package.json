@@ -19,11 +19,11 @@
     "generate": "nuxt generate",
     "clean": "rimraf dist",
     "lint": "run-p lint:*",
-    "lint:style": "stylelint '{assets,components,layouts,middleware,modules,pages,store}/**/*.css'",
-    "lint:script": "tslint '{assets,components,layouts,middleware,modules,pages,store}/**/*.ts'",
+    "lint:style": "stylelint './src/**/*.css'",
+    "lint:script": "tslint './src/**/*.ts'",
     "lint:vue": "run-p lint:vue:*",
-    "lint:vue:style": "stylelint --config .vue.stylelintrc '{assets,components,layouts,middleware,modules,pages,store}/**/*.vue'",
-    "prettier": "prettier --write '{assets,components,layouts,middleware,modules,pages,store}/**/*.{ts,js,json,css,vue}'"
+    "lint:vue:style": "stylelint --config .vue.stylelintrc './src/**/*.vue'",
+    "prettier": "prettier --write './src/**/*.{ts,js,json,css,vue}'"
   },
   "lint-staged": {
     "subTaskConcurrency": 1,

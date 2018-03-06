@@ -1,4 +1,12 @@
 const parseArgs = require('minimist');
+const postcssImport = require('postcss-import');
+const postcssCustomProperties = require('postcss-custom-properties');
+const postcssCustomMedia = require('postcss-custom-media');
+const postcssNested = require('postcss-nested');
+const postcssColorHexAlpha = require('postcss-color-hex-alpha');
+const postcssFixes = require('postcss-fixes');
+const postcssUrl = require('postcss-url');
+const autoprefixer = require('autoprefixer');
 
 const argv = parseArgs(process.argv.slice(2), {
   alias: {
@@ -20,6 +28,7 @@ const host =
   process.env.npm_package_config_nuxt_host ||
   'localhost';
 module.exports = {
+  srcDir: 'src/',
   env: {
     baseUrl:
       process.env.BASE_URL ||
@@ -58,19 +67,19 @@ module.exports = {
   css: ['~/assets/css/main.css'],
   build: {
     postcss: [
-      require('postcss-import')(),
-      require('postcss-custom-properties')(),
-      require('postcss-custom-media')(),
-      require('postcss-nested')(),
-      require('postcss-color-hex-alpha')(),
-      require('postcss-fixes')(),
-      require('postcss-url')(),
-      require('autoprefixer')(),
+      postcssImport(),
+      postcssCustomProperties(),
+      postcssCustomMedia(),
+      postcssNested(),
+      postcssColorHexAlpha(),
+      postcssFixes(),
+      postcssUrl(),
+      autoprefixer(),
     ]
   },
   modules: [
     '@nuxtjs/axios',
-    '~/modules/typescript.js'
+    '~~/modules/typescript.js'
   ],
   axios: {}
 };
