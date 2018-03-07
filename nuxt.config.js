@@ -11,13 +11,15 @@ const autoprefixer = require('autoprefixer');
 const argv = parseArgs(process.argv.slice(2), {
   alias: { H: 'hostname', p: 'port' },
   string: ['H'],
-  unknown: parameter => false,
+  unknown: _parameter => false,
 });
 const port = argv.port || process.env.PORT || process.env.npm_package_config_nuxt_port || '3000';
 const host = argv.hostname || process.env.HOST || process.env.npm_package_config_nuxt_host || 'localhost';
+const baseUrl = process.env.BASE_URL || `http://${host}:${port}`;
 const postcss = [
   postcssImport(),
-  postcssCustomProperties(),
+  postcssCustomProperties({ preserve: false }),
+  // postcssCustomProperties({ preserve: 'preserve-computed' }),
   postcssCustomMedia(),
   postcssNested(),
   postcssColorHexAlpha(),
@@ -25,12 +27,11 @@ const postcss = [
   postcssUrl(),
   autoprefixer(),
 ];
+const routes = ['/members/1', '/members/2', '/members/3'];
 
 module.exports = {
   srcDir: 'src/',
-  env: {
-    baseUrl: process.env.BASE_URL || `http://${host}:${port}`,
-  },
+  env: { baseUrl },
   head: {
     title: 'tt1',
     meta: [
@@ -47,14 +48,28 @@ module.exports = {
   /*
    * generate command configration
    */
-  generate: {
-    routes: ['/members/1', '/members/2', '/members/3'],
+  generate: { routes },
+  /*
+   * sitemap configuration
+   */
+  sitemap: {
+    path: '/sitemap.xml',
+    hostname: baseUrl,
+    cacheTime: 1000 * 60 * 15,
+    generate: true, // Enable me when using nuxt generate
+    exclude: ['/members/show', '/members/edit'],
+    routes,
   },
   /*
   ** Build configuration
   */
-  css: ['~/assets/css/main.css'],
+  // css: ['~/styles/variables.css', '~/styles/keyframes.css', '~/styles/reset.css'].map(src => ({
+  css: ['~/styles/keyframes.css', '~/styles/reset.css'].map(src => ({
+    src,
+    lang: 'postcss',
+  })),
   build: { postcss },
-  modules: ['@nuxtjs/axios', '~~/modules/typescript.js'],
+  modules: ['@nuxtjs/axios', '@nuxtjs/sitemap', '~~/modules/typescript.js'],
+  extractCSS: true,
   axios: {},
 };

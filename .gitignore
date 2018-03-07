@@ -128,11 +128,10 @@ $RECYCLE.BIN/
 
 # End of https://www.gitignore.io/api/osx,linux,windows,node
 
-# Nuxt build
+# Nuxt generate files
 .nuxt
-
-# Nuxt generate
 dist
+src/static/sitemap.xml
 
 # Editors
 /.vscode

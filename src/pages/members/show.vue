@@ -1,3 +1,5 @@
+<!-- 静的書き出し時にredirectする用のコンポーネント -->
+
 <script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator';
 

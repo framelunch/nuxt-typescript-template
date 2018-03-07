@@ -15,7 +15,9 @@ export default class extends Vue {
 }
 </script>
 
-<style scoped>
+<style lang="postcss" scoped>
+@import '../styles/variables.css';
+
 .header {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
@@ -23,6 +25,10 @@ export default class extends Vue {
 .cards {
   display: flex;
   flex-wrap: wrap;
+}
+
+li {
+  color: var(--color-text);
 }
 </style>
 
