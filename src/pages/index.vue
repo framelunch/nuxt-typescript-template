@@ -30,6 +30,12 @@ export default class extends Vue {
   <section>
     <h1 class="header">Nuxt TypeScript Starter</h1>
     <router-link to="/about">アバウト</router-link>
+    <router-link :to="{ name: 'members', params: { id: 1 }}">Member1</router-link>
+    <router-link :to="{ name: 'members', params: { id: 2 }}">Member2</router-link>
+    <router-link :to="{ name: 'members', params: { id: 3 }}">Member3</router-link>
+    <router-link to="/members/1">MemberTo1</router-link>
+    <router-link to="/members/2">MemberTo2</router-link>
+    <router-link to="/members/3">MemberTo3</router-link>
     <div class="cards">
       <Card v-for="person in people" :key="person.id" :person="person"></Card>
     </div>

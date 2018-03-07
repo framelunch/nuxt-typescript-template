@@ -2,5 +2,4 @@ dist
 node_modules
 src/static
 package.json
-nuxt.config.js
 tsconfig.json
