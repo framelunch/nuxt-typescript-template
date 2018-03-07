@@ -13,13 +13,16 @@ export const mutations = {
     prevState.people = people;
   },
 };
-
 export const actions = {
-  async nuxtServerInit({ commit }: IncludeCommitObject, { app }: NuxtApp) {
+  async nuxtServerInit({ commit }: IncludeCommitObject, { app, isStatic, isDev, isHMR, route }: NuxtApp) {
+    if (isStatic || route.name !== 'index') {
+      return;
+    }
+
     const people = await app.$axios.$get<PersonEntity[]>('./random-data.json');
     commit(
       'setPeople',
-      people.slice(0, 100).map(
+      people.slice(0, 20).map(
         person =>
           ({
             id: person.id,
@@ -44,4 +47,8 @@ interface NuxtApp {
       $get<T = any>(url: string, config?: AxiosRequestConfig): Promise<T>;
     };
   };
+  route: { name: string };
+  isStatic: boolean;
+  isDev: boolean;
+  isHMR: boolean;
 }

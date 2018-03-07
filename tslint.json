@@ -24,10 +24,12 @@
     "member-ordering": [false],
     // 変数名予約語禁止、lowerCase or UPPER_CASE、アンスコ始まりOK
     "variable-name": [true, "ban-keywords", "check-format", "allow-leading-underscore"],
+    // namespace禁止 ただし型定義の際には許可する
+    "no-namespace": [true, "allow-declarations"],
 
     /*
-         * enable prettier
-         */
+     * enable prettier
+     */
     "prettier": true
   }
 }
