@@ -38,8 +38,17 @@ yarn generate
 
 `src/pages/`の下を拡張していくと勝手にルーティングも変更されてよしなにしてくれます。
 
+## 検証方法
+
+dockerが例によって強いです
+こんな感じで`yarn generate`で生成したファイルとhttpd.confをマウントすると`localhost:8080`で検証できます
+
+```bash
+docker run -dit --name nuxt-test-httpd -p 8080:80 -v "$PWD/dist":/usr/local/apache2/htdocs -v "$PWD/modules/httpd.conf":/usr/local/apache2/conf/httpd.conf httpd:alpine
+```
+
 ## TODO
 
-* test
-* `.vue` lint
-* robots.txtとかfaviconとかの扱い
+* [ ] test
+* [ ] `.vue` lint
+* [x] robots.txtとかfaviconとかの扱い

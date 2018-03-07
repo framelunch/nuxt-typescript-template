@@ -18,8 +18,6 @@
     "start": "nuxt start",
     "pregenerate": "npm run clean",
     "generate": "nuxt generate",
-    "preserver": "npm run generate",
-    "server": "http-server ./dist",
     "clean": "rimraf dist",
     "lint": "run-p lint:*",
     "lint:style": "stylelint './src/**/*.css'",

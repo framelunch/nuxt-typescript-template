@@ -1,0 +1,9 @@
+# Rewrite
+RewriteEngine On
+RewriteBase /
+# TODO: 直接覗かれたら404を返したい！これだと全殺しなのでだめ
+# RewriteRule ^members/edit.*$ - [R=404,L]
+# RewriteRule ^members/show.*$ - [R=404,L]
+# membersの動的URLはそれぞれのhtmlを表示する あとはvueがよしなにやってくれる
+RewriteRule ^members/\d+$ members/show/index.html
+RewriteRule ^members/\d+/edit$ members/edit/index.html
