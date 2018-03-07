@@ -18,6 +18,8 @@
     "start": "nuxt start",
     "pregenerate": "npm run clean",
     "generate": "nuxt generate",
+    "preserver": "npm run generate",
+    "server": "http-server ./dist",
     "clean": "rimraf dist",
     "lint": "run-p lint:*",
     "lint:style": "stylelint './src/**/*.css'",
@@ -59,6 +61,7 @@
   ],
   "devDependencies": {
     "@types/node": "^9.4.6",
+    "http-server": "^0.11.1",
     "husky": "^0.14.3",
     "lint-staged": "^7.0.0",
     "npm-run-all": "^4.1.2",
