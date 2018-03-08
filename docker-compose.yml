@@ -1,0 +1,10 @@
+version: "2"
+services:
+  apache:
+    restart: always
+    image: httpd:alpine
+    ports:
+      - "8080:80"
+    volumes:
+      - ./dist:/usr/local/apache2/htdocs
+      - ./modules/httpd.conf:/usr/local/apache2/conf/httpd.conf
