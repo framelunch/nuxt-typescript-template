@@ -20,6 +20,9 @@
     "pregenerate": "npm run clean",
     "generate": "nuxt generate",
     "clean": "rimraf dist",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
     "lint": "run-p lint:*",
     "lint:style": "stylelint './src/**/*.css'",
     "lint:script": "tslint './src/**/*.ts'",
@@ -59,9 +62,13 @@
     "not chrome 49"
   ],
   "devDependencies": {
+    "@types/jest": "^22.2.0",
     "@types/node": "^9.4.6",
+    "@vue/test-utils": "^1.0.0-beta.12",
     "http-server": "^0.11.1",
     "husky": "^0.14.3",
+    "jest": "^22.4.2",
+    "jest-vue-preprocessor": "^1.3.1",
     "lint-staged": "^7.0.0",
     "npm-run-all": "^4.1.2",
     "postcss-color-hex-alpha": "^3.0.0",
@@ -77,10 +84,12 @@
     "stylelint": "^9.1.1",
     "stylelint-config-framelunch": "framelunch/stylelint-config-framelunch#v0.3.0",
     "stylelint-processor-html": "^1.0.0",
+    "ts-jest": "^22.4.1",
     "ts-loader": "^3.5.0",
     "tslint": "^5.9.1",
     "tslint-config-prettier": "^1.9.0",
     "tslint-plugin-prettier": "^1.3.0",
-    "typescript": "^2.7.2"
+    "typescript": "^2.7.2",
+    "vue-jest": "^2.1.1"
   }
 }

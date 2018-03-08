@@ -63,6 +63,7 @@ module.exports = {
   /*
   ** Build configuration
   */
+  // ここでvariablesを渡しても、postcss-custom-propertiesが発動しない
   // css: ['~/styles/variables.css', '~/styles/keyframes.css', '~/styles/reset.css'].map(src => ({
   css: ['~/styles/keyframes.css', '~/styles/reset.css'].map(src => ({
     src,
