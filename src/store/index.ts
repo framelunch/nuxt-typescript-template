@@ -4,20 +4,44 @@ import { People, Person, PersonEntity } from '../interfaces/Person';
 
 export interface State {
   people: People;
+  count: number;
 }
 
-export const state = () => ({ people: [] } as State);
+export const state = () => ({ people: [], count: 0 } as State);
 
-export const mutations = {
-  setPeople(prevState: State, people: People) {
-    prevState.people = people;
+/*
+ * getter stateを規則的に加工したいときはこれでOK
+ */
+export const getters = {
+  count100(currentState: State) {
+    return currentState.count * 100;
   },
 };
+
+/*
+ * mutation ここでstateを変更する。複雑なことはなるべくactionでやる
+ */
+export const mutations = {
+  setPeople(currentState: State, people: People) {
+    currentState.people = people;
+  },
+
+  addCount(currentState: State, add: number) {
+    currentState.count += add;
+  },
+};
+
+/*
+ * action stateに反映したい値を取得・作成する。非同期処理もここ。
+ * 各componentからはこれを呼ぶ @Action('ACTION_NAME') onButtonClick: void; みたいな。
+ */
 export const actions = {
   async nuxtServerInit({ commit }: IncludeCommitObject, { app, isStatic, isDev, isHMR, route }: NuxtApp) {
     if (isStatic || route.name !== 'index') {
       return;
     }
+
+    console.log(process.browser);
 
     const people = await app.$axios.$get<PersonEntity[]>('./random-data.json');
     commit(
@@ -32,13 +56,19 @@ export const actions = {
       ),
     );
   },
+  countup({ commit }: IncludeCommitObject) {
+    commit('addCount', 1);
+  },
+  countdown({ commit }: IncludeCommitObject) {
+    commit('addCount', -1);
+  },
 };
 
 /*
  * TODO 強引
  */
 interface IncludeCommitObject {
-  commit(action: string, value: any[]): void;
+  commit(action: string, value: any): void;
 }
 
 interface NuxtApp {

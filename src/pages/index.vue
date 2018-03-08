@@ -1,6 +1,6 @@
 <script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator';
-import { State } from 'vuex-class';
+import { State, Action, Getter } from 'vuex-class';
 
 import Card from '~/components/Card.vue';
 import { People } from '../interfaces/Person';
@@ -12,6 +12,10 @@ import { People } from '../interfaces/Person';
 })
 export default class extends Vue {
   @State people: People;
+  @State count: number;
+  @Action('countup') onCountUpClick: void;
+  @Action('countdown') onCountDownClick: void;
+  @Getter count100: number;
 }
 </script>
 
@@ -46,6 +50,9 @@ li {
       <li><router-link to="/members/3/edit">MemberEdit3</router-link></li>
       <li><router-link to="/members/9999/edit">MemberEdit9999</router-link></li>
     </ul>
+    Count: {{count}} {{count100}}
+    <button @click="onCountUpClick">Up</button>
+    <button @click="onCountDownClick">Down</button>
     <div class="cards">
       <Card v-for="person in people" :key="person.id" :person="person"></Card>
     </div>
