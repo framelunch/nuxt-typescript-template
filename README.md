@@ -49,6 +49,6 @@ docker run -dit --name nuxt-test-httpd -p 8080:80 -v "$PWD/dist":/usr/local/apac
 
 ## TODO
 
-* [ ] test
+* [x] test
 * [ ] `.vue` lint
 * [x] robots.txtとかfaviconとかの扱い
