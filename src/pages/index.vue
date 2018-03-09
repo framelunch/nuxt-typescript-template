@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Component, Vue, Prop } from 'nuxt-property-decorator';
+import { Component, Vue, Prop } from 'vue-property-decorator';
 import { State, Action, Getter } from 'vuex-class';
 
 import Card from '~/components/Card.vue';

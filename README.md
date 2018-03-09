@@ -14,6 +14,7 @@ https://github.com/nuxt-community/typescript-template/tree/22d0c56f20bfd588c264b
 * `tslint`を設定し`.ts`ファイルの構文をチェックします。`.vue`ファイルについては現在のところスルーです。
 * `stylelint`を設定し`.css`, `.vue`ファイルの構文をチェックします。
 * `sanitize.css`を読み込みCSSをリセットしています。
+* `nuxt-property-decorator`を削除し`vue-property-decorator`に置き換えています。前者は更新が止まっておりまた後者の劣化移植でしかないようにみえます。
 * `tsconfig.json`を変更しより厳格にtsコードのチェックを行うようになっています。
 * `@nuxtjs/sitemap`を導入しいい感じのsitemapを生成するようにしています。
 * `jest`を導入しテストが書けるようになっています。`yarn test`で実行
@@ -41,7 +42,17 @@ yarn generate
 
 ## 拡張方法
 
-`src/pages/`の下を拡張していくと勝手にルーティングも変更されてよしなにしてくれます。
+### 新しいページを追加したい
+
+`src/pages/`の下を拡張していくと勝手にルーティングも変更されてよしなにしてくれます。  
+詳しくは[オフィシャルを参照](https://ja.nuxtjs.org/guide/routing)あれ
+
+### その他
+
+ほぼすべて`nuxt.config.js`に設定がまとまっているので変更してください。  
+詳しくは[オフィシャルを参照](https://ja.nuxtjs.org/guide/configuration)あれ
+
+###
 
 ## 検証方法
 
