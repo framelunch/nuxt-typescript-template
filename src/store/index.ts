@@ -4,19 +4,9 @@ import { People, Person, PersonEntity } from '../interfaces/Person';
 
 export interface State {
   people: People;
-  count: number;
 }
 
-export const state = () => ({ people: [], count: 0 } as State);
-
-/*
- * getter stateを規則的に加工したいときはこれでOK
- */
-export const getters = {
-  count100(currentState: State) {
-    return currentState.count * 100;
-  },
-};
+export const state = () => ({ people: [] } as State);
 
 /*
  * mutation ここでstateを変更する。複雑なことはなるべくactionでやる
@@ -24,10 +14,6 @@ export const getters = {
 export const mutations = {
   setPeople(currentState: State, people: People) {
     currentState.people = people;
-  },
-
-  addCount(currentState: State, add: number) {
-    currentState.count += add;
   },
 };
 
@@ -41,8 +27,7 @@ export const actions = {
       return;
     }
 
-    console.log(process.browser);
-
+    console.log(process);
     const people = await app.$axios.$get<PersonEntity[]>('./random-data.json');
     commit(
       'setPeople',
@@ -55,12 +40,6 @@ export const actions = {
           } as Person),
       ),
     );
-  },
-  countup({ commit }: IncludeCommitObject) {
-    commit('addCount', 1);
-  },
-  countdown({ commit }: IncludeCommitObject) {
-    commit('addCount', -1);
   },
 };
 
