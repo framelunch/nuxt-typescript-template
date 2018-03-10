@@ -20,6 +20,7 @@
     "pregenerate": "npm run clean",
     "generate": "nuxt generate",
     "clean": "rimraf dist",
+    "guard": "run-p test:watch typecheck:watch",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
@@ -27,8 +28,10 @@
     "lint:style": "stylelint './src/**/*.css'",
     "lint:script": "tslint './src/**/*.ts'",
     "lint:vue": "run-p lint:vue:*",
-    "lint:vue:style": "stylelint --config .vue.stylelintrc './src/**/*.vue'",
-    "fix": "prettier --write './src/**/*.{ts,js,json,css,vue}'"
+    "lint:vue:style": "stylelint --config .vue.stylelintrc.js './src/**/*.vue'",
+    "fix": "prettier --write './src/**/*.{ts,js,json,css,vue}'",
+    "typecheck": "tsc --noEmit",
+    "typecheck:watch": "tsc --noEmit -w"
   },
   "lint-staged": {
     "subTaskConcurrency": 1,

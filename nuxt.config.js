@@ -26,7 +26,9 @@ const postcss = [
   autoprefixer(),
 ];
 // 動的ルーティングのページをある程度静的に吐き出したい箇所はここにセット
-const routes = ['/members/1', '/members/2', '/members/3'];
+const routes = [
+  // '/members/1', '/members/2', '/members/3'
+];
 
 /*
  * meta
@@ -45,27 +47,36 @@ const twitter = [
   // { property: 'twitter:card', content: '' },
   // { property: 'twitter:site', content: '' },
 ];
+const meta = [
+  { charset: 'utf-8' },
+  { 'http-equiv': 'x-ua-compatible', content: 'ie=edge' },
+  { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+  { hid: 'description', name: 'description', content: description },
+  { hid: 'itempropName', itemprop: 'name', content: title },
+  { hid: 'itempropDesc', itemprop: 'description', content: description },
+  { hid: 'itempropImage', itemprop: 'image', content: metaImage },
+  { property: 'og:title', content: title },
+  { property: 'og:description', content: description },
+  ...og,
+  ...twitter,
+];
+
+/*
+ * sitemap
+ */
+const sitemap = {
+  path: '/sitemap.xml',
+  hostname: baseUrl,
+  cacheTime: 1000 * 60 * 15,
+  generate: true, // Enable me when using nuxt generate
+  exclude: ['/members/show', '/members/edit'],
+  routes,
+};
 
 module.exports = {
   srcDir: 'src/',
   env: { baseUrl },
-  head: {
-    title,
-    meta: [
-      { charset: 'utf-8' },
-      { 'http-equiv': 'x-ua-compatible', content: 'ie=edge' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: description },
-      { hid: 'itempropName', itemprop: 'name', content: title },
-      { hid: 'itempropDesc', itemprop: 'description', content: description },
-      { hid: 'itempropImage', itemprop: 'image', content: metaImage },
-      { property: 'og:title', content: title },
-      { property: 'og:description', content: description },
-      ...og,
-      ...twitter,
-    ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
-  },
+  head: { title, meta, link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }] },
   /*
   ** Customize the progress-bar color
   */
@@ -77,14 +88,7 @@ module.exports = {
   /*
    * sitemap configuration
    */
-  sitemap: {
-    path: '/sitemap.xml',
-    hostname: baseUrl,
-    cacheTime: 1000 * 60 * 15,
-    generate: true, // Enable me when using nuxt generate
-    exclude: ['/members/show', '/members/edit'],
-    routes,
-  },
+  sitemap,
   /*
   ** Build configuration
   */

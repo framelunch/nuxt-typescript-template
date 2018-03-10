@@ -26,6 +26,8 @@
     "variable-name": [true, "ban-keywords", "check-format", "allow-leading-underscore"],
     // namespace禁止 ただし型定義の際には許可する
     "no-namespace": [true, "allow-declarations"],
+    // ifやwhileなど{}が必要な構文は必須 ただし同一行に書いちゃう場合はスルー
+    "curly": [true, "ignore-same-line"],
 
     /*
      * enable prettier
