@@ -4,6 +4,7 @@ services:
     image: httpd:alpine
     ports:
       - "8080:80"
+      - "8443:443"
     volumes:
       - ./dist:/usr/local/apache2/htdocs
       - ./modules/httpd.conf:/usr/local/apache2/conf/httpd.conf
@@ -11,7 +12,7 @@ services:
     image: nginx:alpine
     ports:
       - "8880:80"
-      - "8443:80"
+      - "8843:443"
     volumes:
       - ./dist:/usr/share/nginx/html
       - ./modules/default.conf:/etc/nginx/conf.d/default.conf
