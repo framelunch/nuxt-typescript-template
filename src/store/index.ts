@@ -27,7 +27,6 @@ export const actions = {
       return;
     }
 
-    console.log(process);
     const people = await app.$axios.$get<PersonEntity[]>('./random-data.json');
     commit(
       'setPeople',

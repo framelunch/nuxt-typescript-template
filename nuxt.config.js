@@ -69,7 +69,7 @@ const sitemap = {
   hostname: baseUrl,
   cacheTime: 1000 * 60 * 15,
   generate: true, // Enable me when using nuxt generate
-  exclude: ['/members/show', '/members/edit'],
+  // exclude: [],
   routes,
 };
 
@@ -93,8 +93,8 @@ module.exports = {
   ** Build configuration
   */
   // ここでvariablesを渡しても、postcss-custom-propertiesが発動しない
-  css: ['~/styles/keyframes.css', '~/styles/reset.css'].map(src => ({ src, lang: 'postcss' })),
-  build: { postcss },
+  css: [].map(src => ({ src, lang: 'postcss' })),
+  build: { postcss, vendor: ['babel-polyfill'] },
   modules: ['@nuxtjs/axios', '@nuxtjs/sitemap', '~~/modules/typescript.js'],
   extractCSS: true, // 別途CSSを出力するのではなく、htmlのstyleタグに埋め込まれる
   axios: {},

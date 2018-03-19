@@ -45,5 +45,7 @@ module.exports = {
     'block-opening-brace-space-before': null,
     'number-leading-zero': null,
     'number-no-trailing-zeros': null,
+    'value-list-comma-newline-after': null,
+    'declaration-colon-newline-after': null,
   },
 };
